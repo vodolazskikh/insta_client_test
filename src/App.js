@@ -1,22 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { config } from "./config";
 
 function App() {
+  const auth = () => {
+    const url = `${config.instagramApi}oauth/authorize?client_id=${config.appId}&redirect_uri=${config.api}auth&scope=user_profile,user_media&response_type=code`;
+    console.log("url", url);
+    window.location.href = url;
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
+        <div
           className="App-link"
-          href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={auth}
         >
-          Learn React
-        </a>
+          Авторизация
+        </div>
       </header>
     </div>
   );
